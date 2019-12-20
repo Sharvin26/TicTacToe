@@ -67,9 +67,3 @@ while play:
                                "you want to play? ( 0, 1, 2 ): "))
         game = game_board(game, current_player, row_choice, 
                           column_choice)
-
-
-
-
-
-
