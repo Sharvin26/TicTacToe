@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import itertools
 from colorama import Fore, Back, Style, init
 init()
@@ -76,37 +79,37 @@ def win(current_game):
     
     return False
 
+if __name__ == "__main__":
+    play = True
+    players = [1, 2]
 
-play = True
-players = [1, 2]
+    while play:
 
-while play:
-
-    game_size = int(input("Enter the size of tictactoe game you wanna play? "))
-    game = [ [ 0 for i in range(game_size) ] for i in range(game_size) ]
-    game_won = False
-    game, _ = game_board(game, just_display = True)
-    player_choice = itertools.cycle([1,2])
-    while not game_won:
-        current_player = next(player_choice)
-        print(f"Current player: {current_player}")
-        played = False
-        while not played:
-            column_choice = int(input("What column do "
-                                "you want to play? ( eg: 0, 1, 2 ): "))
-            row_choice = int(input("What row do you want to "
-                                "play? ( eg: 0, 1, 2 ): "))
-            game, played = game_board(game, current_player, row_choice, 
-                            column_choice)
-        if win(game):
-            game_won = True
-            again = input("Game is over, would you like"
-                          " to play again?? ( y/n ): ")
-            if again.lower() == 'y' or again.lower() == 'yes':
-                print("Restarting...")
-            elif again.lower() == 'n' or again.lower() == 'no':
-                print("GoodBye....")
-                play = False
-            else:
-                print("Not a valid ans so...see you later...")
-                play = False
+        game_size = int(input("Enter the size of tictactoe game you wanna play? "))
+        game = [ [ 0 for i in range(game_size) ] for i in range(game_size) ]
+        game_won = False
+        game, _ = game_board(game, just_display = True)
+        player_choice = itertools.cycle([1,2])
+        while not game_won:
+            current_player = next(player_choice)
+            print(f"Current player: {current_player}")
+            played = False
+            while not played:
+                column_choice = int(input("What column do "
+                                    "you want to play? ( eg: 0, 1, 2 ): "))
+                row_choice = int(input("What row do you want to "
+                                    "play? ( eg: 0, 1, 2 ): "))
+                game, played = game_board(game, current_player, row_choice, 
+                                column_choice)
+            if win(game):
+                game_won = True
+                again = input("Game is over, would you like"
+                            " to play again?? ( y/n ): ")
+                if again.lower() == 'y' or again.lower() == 'yes':
+                    print("Restarting...")
+                elif again.lower() == 'n' or again.lower() == 'no':
+                    print("GoodBye....")
+                    play = False
+                else:
+                    print("Not a valid ans so...see you later...")
+                    play = False
